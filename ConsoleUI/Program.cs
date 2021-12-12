@@ -9,20 +9,32 @@ using DataAccess.Concrete.InMemory;
 
 ProductManager productManager = new ProductManager(new EfProductDal());
 
-//foreach (var product in productManager.GetProductDetails())
-//{
-//    Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+var result = productManager.GetProductDetails();
 
-//}
-
-
-
-
-CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
-foreach (var category in categoryManager.GetAll())
+if (result.Success)
 {
-    Console.WriteLine(category.CategoryName);
+    foreach (var product in result.Data )
+    {
+        Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+
+    }
+
 }
+else
+{
+    Console.WriteLine(result.Message);
+}
+
+
+
+
+
+
+//CategoryManager categoryManager = new CategoryManager(new EfCategoryDal());
+//foreach (var category in categoryManager.GetAll())
+//{
+//    Console.WriteLine(category.CategoryName);
+//}
 
 
 

@@ -22,7 +22,7 @@ namespace DataAccess.Concrete.EntityFramework
                              join c in context.Categories
                              on p.CategoryId equals c.CategoryId
                              select new ProductDetailDto { ProductId = p.ProductId , ProductName = p.ProductName, CategoryName = c.CategoryName,UnitsInStock = p.UnitsInStock};
-                return result.ToList();
+                             return result.ToList();
             }
 
         }
